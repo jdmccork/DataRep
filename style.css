@@ -1,0 +1,30 @@
+
+:root{
+  --numInputs:4;
+  --vh:100vh;
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: black;
+}
+
+div{
+  height:calc(var(--vh)/var(--numInputs));
+}
+
+input{
+  width:100%;
+  height:100%;
+  background: black;
+  color:white;
+  text-align: center;
+  font-size: 10em;
+  border: 0;
+  border-top: 3px solid grey;
+}
