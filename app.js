@@ -2,84 +2,102 @@ const decimalInput = document.querySelector("#decimal > input");
 const binaryInput = document.querySelector("#binary > input");
 const octalInput = document.querySelector("#octal > input");
 const hexadecimalInput = document.querySelector("#hexadecimal > input");
-//const asciiInput = document.querySelector("#ascii > input");
 
 function decConvert(){
   var dec = parseFloat(decimalInput.value);
+  if (decimalInput.value==''){
+    binaryInput.value = '';
+    octalInput.value = '';
+    hexadecimalInput.value = '';
+    return;
+  }
   var bin = dec.toString(2);
   var oct = dec.toString(8);
   var hex = dec.toString(16);
-  //var ascii = String.fromCharCode(dec);
   binaryInput.value = bin;
   octalInput.value = oct;
   hexadecimalInput.value = hex;
-  //asciiInput.value = ascii;
 }
 
 function binConvert(){
   var bin = parseFloat(binaryInput.value);
+  var re = /-?[0-1]+$/;
+  if (binaryInput.value==''){
+    decimalInput.value = '';
+    octalInput.value = '';
+    hexadecimalInput.value = '';
+    return;
+  }
+  if(!re.test(binaryInput.value)) {
+    alert("Error: Binary inputs can only contain 1 or 0");
+    binaryInput.value = bin;
+    binaryInput.focus();
+    decimalInput.value = '';
+    octalInput.value = '';
+    hexadecimalInput.value = '';
+    return false;
+  }
   var dec = parseInt(bin,2);
   var oct = dec.toString(8);
   var hex = dec.toString(16);
-  //var ascii = String.fromCharCode(dec);
   decimalInput.value = dec;
   octalInput.value = oct;
   hexadecimalInput.value = hex;
-  //asciiInput.value = ascii;
 }
 
 function octConvert(){
   var oct = parseFloat(octalInput.value);
-  var re = /^[0-7]+$/;
+  var re = /-?[0-7]+$/;
+  if (octalInput.value==''){
+    decimalInput.value = '';
+    binaryInput.value = '';
+    hexadecimalInput.value = '';
+    return;
+  }
   if(!re.test(octalInput.value)) {
     alert("Error: All numbers must be within 0-7 for octal input");
     octalInput.value = oct;
     octalInput.focus();
-
+    decimalInput.value = '';
+    binaryInput.value = '';
+    hexadecimalInput.value = '';
     return false;
   }
   var dec = parseInt(oct,8);
   var bin = dec.toString(2);
   var hex = dec.toString(16);
-  //var ascii = String.fromCharCode(dec);
   decimalInput.value = dec;
   binaryInput.value = bin;
   hexadecimalInput.value = hex;
-  //asciiInput.value = ascii;
 }
 
 function hexConvert(){
   var hex = hexadecimalInput.value;
+  var re = /-?[0-9a-fA-F]+$/;
+  if (hexadecimalInput.value=='' || hexadecimalInput.value=='-'){ //required as it is not primarily a number
+    decimalInput.value = '';
+    binaryInput.value = '';
+    octalInput.value = '';
+    return;
+  }
+  if(!re.test(hexadecimalInput.value)) {
+    alert("Error: Values permited must contain numbers from 0-9 or letters a-f");
+    hexadecimalInput.value = hex.slice(0, -1);;
+    hexadecimalInput.focus();
+  }
   var dec = parseInt(hex,16);
   var bin = dec.toString(2);
   var oct = dec.toString(8);
-  //var ascii = String.fromCharCode(dec);
   decimalInput.value = dec;
   binaryInput.value = bin;
   octalInput.value = oct;
-  //asciiInput.value = ascii;
 }
-
-/*function asciiConvert(){
-  var ascii = asciiInput.value;
-  var dec = ascii.charAt(0);
-  console.log(dec);
-  var bin = dec.toString(2);
-  var oct = dec.toString(8);
-  var hex = dec.toString(16);
-  decimalInput.value = dec;
-  binaryInput.value = bin;
-  octalInput.value = oct;
-  hexadecimalInput.value = hex;
-}
-*/
 
 function main(){
   decimalInput.addEventListener('input',decConvert);
   binaryInput.addEventListener('input',binConvert);
   octalInput.addEventListener('input',octConvert);
   hexadecimalInput.addEventListener('input',hexConvert);
-  //asciiInput.addEventListener('input',asciiConvert);
 }
 
 main();
