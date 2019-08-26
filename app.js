@@ -2,6 +2,9 @@ const decimalInput = document.querySelector("#decimal > input");
 const binaryInput = document.querySelector("#binary > input");
 const octalInput = document.querySelector("#octal > input");
 const hexadecimalInput = document.querySelector("#hexadecimal > input");
+var binOld = ''
+var octOld = ''
+var hexOld = ''
 
 function decConvert(){
   var dec = parseFloat(decimalInput.value);
@@ -45,31 +48,62 @@ function binConvert(){
   hexadecimalInput.value = hex;
 }
 
+
+
+
+
+
+
+
 function octConvert(){
-  var oct = parseFloat(octalInput.value);
-  var re = /-?[0-7]+$/;
   if (octalInput.value==''){
     decimalInput.value = '';
     binaryInput.value = '';
     hexadecimalInput.value = '';
     return;
   }
-  if(!re.test(octalInput.value)) {
-    alert("Error: All numbers must be within 0-7 for octal input");
-    octalInput.value = oct;
-    octalInput.focus();
-    decimalInput.value = '';
-    binaryInput.value = '';
-    hexadecimalInput.value = '';
-    return false;
+  while(octalInput.value.includes("8") || octalInput.value.includes("9")) {
+    if(octalInput.value==octOld+1) {
+      while(octalInput.value.includes("8") || octalInput.value.includes("9")){
+        if (octalInput.value<0){
+          octalInput.value=parseInt(octalInput.value)+2*Math.pow(10,octalInput.value.length-(octalInput.value.indexOf('9')+1))
+        }else{
+        octalInput.value=parseInt(octalInput.value)+2*Math.pow(10,octalInput.value.length-(octalInput.value.indexOf('8')+1))
+        }
+      }
+    } else if(octalInput.value==octOld-1) {
+      while(octalInput.value.includes("8") || octalInput.value.includes("9")){
+        if(octalInput.value<0){
+          octalInput.value=parseInt(octalInput.value)-2*Math.pow(10,octalInput.value.length-(octalInput.value.indexOf('8')+1))
+        }else{
+          octalInput.value=parseInt(octalInput.value)-2*Math.pow(10,octalInput.value.length-(octalInput.value.indexOf('9')+1)) //2*position of incorrect value 10^position
+        }
+      }
+    } else {
+      alert("Error: All numbers must be within 0-7 for octal input");
+      octalInput.value = octOld;
+      octalInput.focus();
+      return false;
+    }
   }
+  var oct = parseFloat(octalInput.value);
   var dec = parseInt(oct,8);
   var bin = dec.toString(2);
   var hex = dec.toString(16);
   decimalInput.value = dec;
   binaryInput.value = bin;
   hexadecimalInput.value = hex;
+  octOld = oct
 }
+
+
+
+
+
+
+
+
+
 
 function hexConvert(){
   var hex = hexadecimalInput.value;
@@ -82,7 +116,7 @@ function hexConvert(){
   }
   if(!re.test(hexadecimalInput.value)) {
     alert("Error: Values permited must contain numbers from 0-9 or letters a-f");
-    hexadecimalInput.value = hex.slice(0, -1);;
+    hexadecimalInput.value = hex.slice(0, -1);
     hexadecimalInput.focus();
   }
   var dec = parseInt(hex,16);
