@@ -2,9 +2,10 @@ const decimalInput = document.querySelector("#decimal > input");
 const binaryInput = document.querySelector("#binary > input");
 const octalInput = document.querySelector("#octal > input");
 const hexadecimalInput = document.querySelector("#hexadecimal > input");
-var binOld = ''
-var octOld = ''
-var hexOld = ''
+decOld = ''
+binOld = ''
+octOld = ''
+hexOld = ''
 
 function decConvert(){
   var dec = parseFloat(decimalInput.value);
@@ -20,13 +21,20 @@ function decConvert(){
   binaryInput.value = bin;
   octalInput.value = oct;
   hexadecimalInput.value = hex;
+  decOld = parseFloat(dec)
+  octOld = parseFloat(oct)
+  binOld = parseFloat(bin)
 }
 
 function binConvert(){
+  re = /[2-9]/
   if (binaryInput.value==''){
-    deciamlInput.value = '';
+    decimalInput.value = '';
     octalInput.value = '';
     hexadecimalInput.value = '';
+    decOld = ''
+    binOld = ''
+    octOld = ''
     return;
   }
   while(binaryInput.value.includes("2") || binaryInput.value.includes("9")) {
@@ -46,15 +54,18 @@ function binConvert(){
           binaryInput.value=parseInt(binaryInput.value)-8*Math.pow(10,binaryInput.value.length-(binaryInput.value.indexOf('9')+1)) //2*position of incorrect value 10^position
         }
       }
-    }else {
+    }else{
       alert("Error: Binary inputs can only contain 1 or 0");
-      binaryInput.value = bin;
+      binaryInput.value = binOld;
       binaryInput.focus();
-      decimalInput.value = '';
-      octalInput.value = '';
-      hexadecimalInput.value = '';
       return false;
     }
+  }
+  if(re.test(binaryInput.value)){
+    alert("Error: Binary inputs can only contain 1 or 0");
+    binaryInput.value = binOld;
+    binaryInput.focus();
+    return false;
   }
   var bin = parseFloat(binaryInput.value);
   var dec = parseInt(bin,2);
@@ -63,15 +74,19 @@ function binConvert(){
   decimalInput.value = dec;
   octalInput.value = oct;
   hexadecimalInput.value = hex;
-  binOld=bin
+  decOld = parseFloat(dec)
+  binOld = parseFloat(bin)
+  octOld = parseFloat(oct)
 }
-
 
 function octConvert(){
   if (octalInput.value==''){
     decimalInput.value = '';
     binaryInput.value = '';
     hexadecimalInput.value = '';
+    decOld = ''
+    octOld = ''
+    binOld = ''
     return;
   }
   while(octalInput.value.includes("8") || octalInput.value.includes("9")) {
@@ -105,12 +120,14 @@ function octConvert(){
   decimalInput.value = dec;
   binaryInput.value = bin;
   hexadecimalInput.value = hex;
-  octOld = oct
+  decOld = parseFloat(dec)
+  octOld = parseFloat(oct)
+  binOld = parseFloat(bin)
 }
 
 function hexConvert(){
   var hex = hexadecimalInput.value;
-  var re = /-?[0-9a-fA-F]+$/;
+  var re = /[0-9a-fA-F]/;
   if (hexadecimalInput.value=='' || hexadecimalInput.value=='-'){ //required as it is not primarily a number
     decimalInput.value = '';
     binaryInput.value = '';
@@ -128,6 +145,9 @@ function hexConvert(){
   decimalInput.value = dec;
   binaryInput.value = bin;
   octalInput.value = oct;
+  decOld = dec
+  octOld = oct
+  binOld = bin
 }
 
 function main(){
@@ -135,15 +155,46 @@ function main(){
   binaryInput.addEventListener('input',binConvert);
   octalInput.addEventListener('input',octConvert);
   hexadecimalInput.addEventListener('input',hexConvert);
+  /*
+  document.addEventListener("keydown", function(event) {
+    const key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
+    switch (key) { // change to event.key to key to use the above variable
+      case "ArrowUp":
+      case "ArrowDown":
+        hexTest(key)
+        break;
+    }
+  });
+  */
 }
 
-//var testog="9281"
-//if(testog.some(["5","4","2"])){
-//  console.log('yes')
-//}
 main();
 
+/*
+function hexTest(key){
+  console.log(octOld)
+  console.log(octalInput.value)
+  if(decOld==decimalInput.value && binOld==binaryInput.value && octOld==octalInput.value){
+    console.log(octalInput.value)
+    switch (key){
+      case "ArrowUp":
+        hexUp();
+        break;
+      case "ArrowDown":
+        hexDown()
+        break;
+    }
+  }
+}
 
+function hexUp(){
+  console.log('up')
+}
+
+function hexDown(){
+  console.log('down')
+}
+*/
 
 /*
 function binIn(){
