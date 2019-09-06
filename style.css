@@ -13,7 +13,7 @@ body{
   background: black;
 }
 
-div{
+.converterBox{
   height:calc(var(--vh)/var(--numInputs));
 }
 
@@ -26,4 +26,18 @@ input{
   font-size: 10em;
   border: 0;
   border-top: 3px solid grey;
+}
+
+.card{
+  border-radius: 25px;
+  margin: 15px;
+  padding: 15px;
+  color: white;
+  font-size: 50px;
+  background-color: grey;
+}
+
+.card:hover{
+  color: darkgrey;
+  cursor: pointer;
 }
