@@ -10,7 +10,6 @@ const reset = document.querySelector("reset")
 var lastClick = '';
 
 function wrong(selection){
-  console.log('test complete')
   selection.style.backgroundColor = 'red';
   lastClick.style.backgroundColor = 'red';
 }
@@ -21,6 +20,7 @@ function right(selection){
 }
 
 function check(selection){
+  restart('color')
   if (selection.style.backgroundColor == 'green'){
     return;
   }
@@ -46,40 +46,56 @@ function check(selection){
   }
 }
 
-function restart(){
-  initialise(decimalQuestion)
-  initialise(decimalAnswer)
-  initialise(binaryQuestion)
-  initialise(binaryAnswer)
-  initialise(octalQuestion)
-  initialise(octalAnswer)
-  initialise(hexadecimalQuestion)
-  initialise(hexadecimalAnswer)
-  console.log('reset')
+function restart(method){
+  initialise(decimalQuestion,method)
+  initialise(decimalAnswer,method)
+  initialise(binaryQuestion,method)
+  initialise(binaryAnswer,method)
+  initialise(octalQuestion,method)
+  initialise(octalAnswer,method)
+  initialise(hexadecimalQuestion,method)
+  initialise(hexadecimalAnswer,method)
+  if(method == 'all'){
+    lastClick = ''
+  }
 }
 
-function initialise(card) {
-  card.style.backgroundColor = "";
-  console.log(card.innerHTML);
-  if (card.id == 'question'){
-    switch (card.tagName){
-      case 'DECMATCH':
-        card.innerHTML = Math.floor(Math.random() * 100 + 10)
-        break;
-      case 'BINMATCH':
-        card.innerHTML = parseFloat(decimalQuestion.innerHTML).toString(2)
-      }
+function initialise(card,method) {
+  if (method == 'all'){
+    card.style.backgroundColor = "";
+  }else if(method == 'color' && card.style.backgroundColor != 'green' && card.style.backgroundColor != 'teal'){
+    card.style.backgroundColor = "";
   }
-
+  if(method == 'all'){
+    if (card.id == 'question'){
+      switch (card.tagName){
+        case 'DECMATCH':
+          card.innerHTML = Math.floor(Math.random() * 100 + 10);
+          break;
+        case 'BINMATCH':
+          card.innerHTML = parseFloat(decimalQuestion.innerHTML).toString(2);
+          break;
+        case 'OCTMATCH':
+          card.innerHTML = parseFloat(decimalQuestion.innerHTML).toString(8);
+          break;
+        case "HEXMATCH":
+          card.innerHTML = parseFloat(decimalQuestion.innerHTML).toString(16)
+        }
+      }
+    }
 }
 
 function main(){
   decimalQuestion.onclick = function() {check(decimalQuestion)};
   decimalAnswer.onclick = function() {check(decimalAnswer)};
   binaryQuestion.onclick = function() {check(binaryQuestion)};
-  binaryAnswer.onclick = function() {check(binaryAnswer)}
+  binaryAnswer.onclick = function() {check(binaryAnswer)};
+  octalQuestion.onclick = function() {check(octalQuestion)};
+  octalAnswer.onclick = function() {check(octalAnswer)};
+  hexadecimalQuestion.onclick = function() {check(hexadecimalQuestion)};
+  hexadecimalAnswer.onclick = function() {check(hexadecimalAnswer)};
 
-  reset.onclick = function() {restart()}
+  reset.onclick = function() {restart('all')}
 }
 
 main();
