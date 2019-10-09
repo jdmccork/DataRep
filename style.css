@@ -1,16 +1,40 @@
 :root{
   --numInputs:4;
-  --vh:100vh;
+  --vh:92vh;
+  --vw:97vw;
 }
 
 *{
   padding: 0;
   margin: 0;
+  border: 0;
   box-sizing: border-box;
+  box-sizing: inherit;
 }
 
 body{
   background: black;
+}
+
+p{
+  color: white;
+}
+
+#navigation{
+  height: 7vh;
+}
+
+#navigation ul{
+    list-style: none;
+    display: inline-block;
+    width: calc(var(--vw)/3);
+    text-align: center;
+    font-size: 6vh;
+}
+
+#navigation a{
+  text-decoration: none;
+  color: white;
 }
 
 .converterBox{
@@ -25,16 +49,16 @@ input{
   text-align: center;
   font-size: 10em;
   border: 0;
-  border-top: 3px solid grey;
+  border-top: 0.75vh solid grey;
 }
 
 .card{
   border-radius: 25px;
-  margin: 15px;
   padding: 15px;
   color: white;
   font-size: 50px;
   background-color: grey;
+  display: inline-block;
 }
 
 .card:hover{

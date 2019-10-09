@@ -6,7 +6,7 @@ const octalQuestion = document.querySelector("octMatch#question");
 const octalAnswer = document.querySelector("octMatch#answer");
 const hexadecimalQuestion = document.querySelector("hexMatch#question");
 const hexadecimalAnswer = document.querySelector("hexMatch#answer");
-const reset = document.querySelector("reset")
+const reset = document.querySelector("reset");
 var lastClick = '';
 
 function wrong(selection){
@@ -33,7 +33,7 @@ function check(selection){
         selection.style.backgroundColor = "";
         break;
     }
-    lastClick = selection
+    lastClick = selection;
   } else{
     if (selection == lastClick){
       selection.style.backgroundColor = "";
@@ -42,29 +42,32 @@ function check(selection){
     }else{
       wrong(selection);
     }
-    lastClick = ''
+    lastClick = '';
   }
 }
 
 function restart(method){
-  initialise(decimalQuestion,method)
-  initialise(decimalAnswer,method)
-  initialise(binaryQuestion,method)
-  initialise(binaryAnswer,method)
-  initialise(octalQuestion,method)
-  initialise(octalAnswer,method)
-  initialise(hexadecimalQuestion,method)
-  initialise(hexadecimalAnswer,method)
+  initialise(decimalQuestion,method);
+  initialise(decimalAnswer,method);
+  initialise(binaryQuestion,method);
+  initialise(binaryAnswer,method);
+  initialise(octalQuestion,method);
+  initialise(octalAnswer,method);
+  initialise(hexadecimalQuestion,method);
+  initialise(hexadecimalAnswer,method);
   if(method == 'all'){
-    lastClick = ''
+    lastClick = '';
   }
 }
 
 function initialise(card,method) {
   if (method == 'all'){
     card.style.backgroundColor = "";
-  }else if(method == 'color' && card.style.backgroundColor != 'green' && card.style.backgroundColor != 'teal'){
+    console.log(card.style.marginLeft);
+    card.style.margin = Math.floor(Math.random() * 100 *Math.random())+'px';
+  }else if(method == 'color' && card.style.backgroundColor == 'red'){
     card.style.backgroundColor = "";
+    card.style.margin = Math.floor(Math.random() * 100 *Math.random())+'px';
   }
   if(method == 'all'){
     if (card.id == 'question'){
@@ -95,7 +98,7 @@ function main(){
   hexadecimalQuestion.onclick = function() {check(hexadecimalQuestion)};
   hexadecimalAnswer.onclick = function() {check(hexadecimalAnswer)};
 
-  reset.onclick = function() {restart('all')}
+  reset.onclick = function() {restart('all')};
 }
 
 main();

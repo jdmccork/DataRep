@@ -2,10 +2,10 @@ const decimalInput = document.querySelector("#decimal > input");
 const binaryInput = document.querySelector("#binary > input");
 const octalInput = document.querySelector("#octal > input");
 const hexadecimalInput = document.querySelector("#hexadecimal > input");
-decOld = ''
-binOld = ''
-octOld = ''
-hexOld = ''
+decOld = '';
+binOld = '';
+octOld = '';
+hexOld = '';
 
 function decConvert(){
   var dec = parseFloat(decimalInput.value);
@@ -21,37 +21,37 @@ function decConvert(){
   binaryInput.value = bin;
   octalInput.value = oct;
   hexadecimalInput.value = hex;
-  decOld = parseFloat(dec)
-  octOld = parseFloat(oct)
-  binOld = parseFloat(bin)
+  decOld = parseFloat(dec);
+  octOld = parseFloat(oct);
+  binOld = parseFloat(bin);
 }
 
 function binConvert(){
-  re = /[2-9]/
+  re = /[2-9]/;
   if (binaryInput.value==''){
     decimalInput.value = '';
     octalInput.value = '';
     hexadecimalInput.value = '';
-    decOld = ''
-    binOld = ''
-    octOld = ''
+    decOld = '';
+    binOld = '';
+    octOld = '';
     return;
   }
   while(binaryInput.value.includes("2") || binaryInput.value.includes("9")) {
     if(binaryInput.value==binOld+1) {
       while(binaryInput.value.includes("2") || binaryInput.value.includes("9")){
         if (octalInput.value<0){
-          binaryInput.value=parseInt(binaryInput.value)+8*Math.pow(10,binaryInput.value.length-(binaryInput.value.indexOf('9')+1))
+          binaryInput.value=parseInt(binaryInput.value)+8*Math.pow(10,binaryInput.value.length-(binaryInput.value.indexOf('9')+1));
         }else{
-        binaryInput.value=parseInt(binaryInput.value)+8*Math.pow(10,binaryInput.value.length-(binaryInput.value.indexOf('2')+1))
+        binaryInput.value=parseInt(binaryInput.value)+8*Math.pow(10,binaryInput.value.length-(binaryInput.value.indexOf('2')+1));
         }
       }
     } else if(binaryInput.value==binOld-1) {
       while(binaryInput.value.includes("2") || binaryInput.value.includes("9")){
         if(octalInput.value<0){
-          binaryInput.value=parseInt(binaryInput.value)-8*Math.pow(10,binaryInput.value.length-(binaryInput.value.indexOf('2')+1))
+          binaryInput.value=parseInt(binaryInput.value)-8*Math.pow(10,binaryInput.value.length-(binaryInput.value.indexOf('2')+1));
         }else{
-          binaryInput.value=parseInt(binaryInput.value)-8*Math.pow(10,binaryInput.value.length-(binaryInput.value.indexOf('9')+1)) //2*position of incorrect value 10^position
+          binaryInput.value=parseInt(binaryInput.value)-8*Math.pow(10,binaryInput.value.length-(binaryInput.value.indexOf('9')+1)); //2*position of incorrect value 10^position
         }
       }
     }else{
@@ -74,9 +74,9 @@ function binConvert(){
   decimalInput.value = dec;
   octalInput.value = oct;
   hexadecimalInput.value = hex;
-  decOld = parseFloat(dec)
-  binOld = parseFloat(bin)
-  octOld = parseFloat(oct)
+  decOld = parseFloat(dec);
+  binOld = parseFloat(bin);
+  octOld = parseFloat(oct);
 }
 
 function octConvert(){
@@ -84,26 +84,26 @@ function octConvert(){
     decimalInput.value = '';
     binaryInput.value = '';
     hexadecimalInput.value = '';
-    decOld = ''
-    octOld = ''
-    binOld = ''
+    decOld = '';
+    octOld = '';
+    binOld = '';
     return;
   }
   while(octalInput.value.includes("8") || octalInput.value.includes("9")) {
     if(octalInput.value==octOld+1) {
       while(octalInput.value.includes("8") || octalInput.value.includes("9")){
         if (octalInput.value<0){
-          octalInput.value=parseInt(octalInput.value)+2*Math.pow(10,octalInput.value.length-(octalInput.value.indexOf('9')+1))
+          octalInput.value=parseInt(octalInput.value)+2*Math.pow(10,octalInput.value.length-(octalInput.value.indexOf('9')+1));
         }else{
-        octalInput.value=parseInt(octalInput.value)+2*Math.pow(10,octalInput.value.length-(octalInput.value.indexOf('8')+1))
+        octalInput.value=parseInt(octalInput.value)+2*Math.pow(10,octalInput.value.length-(octalInput.value.indexOf('8')+1));
         }
       }
     } else if(octalInput.value==octOld-1) {
       while(octalInput.value.includes("8") || octalInput.value.includes("9")){
         if(octalInput.value<0){
-          octalInput.value=parseInt(octalInput.value)-2*Math.pow(10,octalInput.value.length-(octalInput.value.indexOf('8')+1))
+          octalInput.value=parseInt(octalInput.value)-2*Math.pow(10,octalInput.value.length-(octalInput.value.indexOf('8')+1));
         }else{
-          octalInput.value=parseInt(octalInput.value)-2*Math.pow(10,octalInput.value.length-(octalInput.value.indexOf('9')+1)) //2*position of incorrect value 10^position
+          octalInput.value=parseInt(octalInput.value)-2*Math.pow(10,octalInput.value.length-(octalInput.value.indexOf('9')+1)); //2*position of incorrect value 10^position
         }
       }
     } else {
@@ -120,9 +120,9 @@ function octConvert(){
   decimalInput.value = dec;
   binaryInput.value = bin;
   hexadecimalInput.value = hex;
-  decOld = parseFloat(dec)
-  octOld = parseFloat(oct)
-  binOld = parseFloat(bin)
+  decOld = parseFloat(dec);
+  octOld = parseFloat(oct);
+  binOld = parseFloat(bin);
 }
 
 function hexConvert(){
@@ -145,9 +145,9 @@ function hexConvert(){
   decimalInput.value = dec;
   binaryInput.value = bin;
   octalInput.value = oct;
-  decOld = dec
-  octOld = oct
-  binOld = bin
+  decOld = dec;
+  octOld = oct;
+  binOld = bin;
 }
 
 function main(){
