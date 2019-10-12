@@ -6,10 +6,16 @@
     <title>Data Match</title>
   </head>
   <body>
-    <div id="navigation">
-      <ul><a href="Home.html">Home</a></ul>
-      <ul><a href="Matching.html">Matching game</a></ul>
-      <ul><a href="Index.html">Converter</a></ul>
+    <div class="dropdown">
+      <div class="navDrop">Navigation▼</div>
+      <div class="navLinks" id="navigation">
+        <ul><a class="primary" href="Home.html">Home</a></ul>
+        <ul><a class="primary" href="Matching.html">Matching game</a></ul>
+        <ul><a class="primary" href="Index.html">Converter</a></ul>
+        <a class="secondary" href="Home.html">Home</a>
+        <a class="secondary" href="Matching.html">Matching game</a>
+        <a class="secondary" href="Index.html">Converter</a>
+      </div>
     </div>
     <decMatch id='question' class="card">50</decMatch>
     <decMatch id='answer' class="card">Decimal</decMatch>
@@ -19,7 +25,7 @@
     <octMatch id='answer' class="card">Octal</octMatch>
     <hexMatch id='question' class="card">32</hexMatch>
     <hexMatch id='answer' class="card">Hexadecimal</hexMatch>
-    <reset class="card">Reset</reset>
-    <script src="matching.js" charset="utf-8"></script>
+    <reset id='reset' class="card">Reset</reset>
+    <script src="Matching.js" charset="utf-8"></script>
   </body>
 </html>
