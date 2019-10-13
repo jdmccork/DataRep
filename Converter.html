@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="Style.css">
-    <title>Data Match</title>
+    <title>Data Representation Converter</title>
   </head>
   <body>
     <nav class="dropdown">
@@ -17,15 +17,19 @@
         <a class="secondary" href="Converter.html">Converter</a>
       </div>
     </nav>
-    <decMatch class="question card">50</decMatch>
-    <decMatch class="answer card">Decimal</decMatch>
-    <binMatch class="question card">110010</binMatch>
-    <binMatch class="answer card">Binary</binMatch>
-    <octMatch class="question card">62</octMatch>
-    <octMatch class="answer card">Octal</octMatch>
-    <hexMatch class="question card">32</hexMatch>
-    <hexMatch class="answer card">Hexadecimal</hexMatch>
-    <reset id='reset' class="card">Start</reset>
-    <script src="Matching.js"></script>
+    <a href="matching.html"></a>
+    <div id='decimal' class='converterBox'>
+      <input type="number" placeholder="Decimal...">
+    </div>
+    <div id='binary' class='converterBox'>
+      <input type="number" placeholder="Binary...">
+    </div>
+    <div id='octal' class='converterBox'>
+      <input type="number" placeholder="Octal...">
+    </div>
+    <div id='hexadecimal' class='converterBox'>
+      <input type="text" placeholder="Hexadecimal...">
+    </div>
+    <script src="Converter.js"></script>
   </body>
 </html>

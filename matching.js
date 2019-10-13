@@ -1,11 +1,11 @@
-const decimalQuestion = document.querySelector("decMatch#question");
-const decimalAnswer = document.querySelector("decMatch#answer");
-const binaryQuestion = document.querySelector("binMatch#question");
-const binaryAnswer = document.querySelector("binMatch#answer");
-const octalQuestion = document.querySelector("octMatch#question");
-const octalAnswer = document.querySelector("octMatch#answer");
-const hexadecimalQuestion = document.querySelector("hexMatch#question");
-const hexadecimalAnswer = document.querySelector("hexMatch#answer");
+const decimalQuestion = document.querySelector("decMatch.question");
+const decimalAnswer = document.querySelector("decMatch.answer");
+const binaryQuestion = document.querySelector("binMatch.question");
+const binaryAnswer = document.querySelector("binMatch.answer");
+const octalQuestion = document.querySelector("octMatch.question");
+const octalAnswer = document.querySelector("octMatch.answer");
+const hexadecimalQuestion = document.querySelector("hexMatch.question");
+const hexadecimalAnswer = document.querySelector("hexMatch.answer");
 const reset = document.querySelector("reset");
 var lastClick = '';
 
@@ -47,6 +47,9 @@ function check(selection){
 }
 
 function restart(method){
+  if(reset.innerHTML=='Start'){
+    reset.innerHTML='Reset';
+  }
   initialise(decimalQuestion,method);
   initialise(decimalAnswer,method);
   initialise(binaryQuestion,method);
@@ -61,13 +64,12 @@ function restart(method){
 }
 
 function initialise(card,method) {
+  card.style.display = 'inline-block';
   if (method == 'all'){
     card.style.backgroundColor = "";
-    console.log(card.style.marginLeft);
     card.style.margin = Math.floor(Math.random() * 100 *Math.random())+'px';
   }else if(method == 'color' && card.style.backgroundColor == 'red'){
     card.style.backgroundColor = "";
-    card.style.margin = Math.floor(Math.random() * 100 *Math.random())+'px';
   }
   if(method == 'all'){
     if (card.id == 'question'){
@@ -102,3 +104,22 @@ function main(){
 }
 
 main();
+
+function dropNav() {
+  document.getElementById("navigation").classList.toggle("show");
+  document.getElementById("navBtn").classList.toggle("changeColor");
+}
+
+window.onclick = function(event) {
+  if (!event.target.matches('.navDrop')) {
+    var dropdowns = document.getElementsByClassName("navLinks");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+        document.querySelector("button.navDrop").style.backgroundColor = 'grey'
+      }
+    }
+  }
+}
