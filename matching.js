@@ -84,7 +84,7 @@ function initialise(card,method) {
           card.innerHTML = parseFloat(decimalQuestion.innerHTML).toString(8);
           break;
         case "HEXMATCH":
-          card.innerHTML = parseFloat(decimalQuestion.innerHTML).toString(16)
+          card.innerHTML = parseFloat(decimalQuestion.innerHTML).toString(16);
         }
       }
     }

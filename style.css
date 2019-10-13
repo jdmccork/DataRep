@@ -17,8 +17,34 @@ body{
   background: black;
 }
 
+nav{
+  border-bottom: 3px;
+  border-style: solid;
+  border-color: grey;
+  font-family: 'Karla', sans-serif;
+}
+
 p{
   color: white;
+  width:75%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Raleway', sans-serif;
+}
+
+h2{
+  color: white;
+  text-align: center;
+  padding: 8px 0 15px 0;
+  font-family: 'Lato', sans-serif;
+}
+
+hr{
+  height:3px;
+  background: grey;
+  margin: auto;
+  margin-top: 10px;
+  width: 80%;
 }
 
 .navDrop, .secondary{
@@ -53,8 +79,8 @@ input{
   color:white;
   text-align: center;
   font-size: 10em;
-  border: 0;
   border-top: 0.75vh solid grey;
+  font-family: 'Lato', sans-serif;
 }
 
 .card{
@@ -84,7 +110,23 @@ input{
 
 }
 
-@media only screen and (max-width: 880px) {
+@media only screen and (max-width: 1013px) {
+  #navigation ul{
+      list-style: none;
+      display: inline-block;
+      width: calc(var(--vw)/3);
+      text-align: center;
+      font-size: 4vh;
+      margin-top: 1vh;
+  }
+
+  #navigation a{
+    text-decoration: none;
+    color: white;
+  }
+}
+
+@media only screen and (max-width: 830px) {
   #navigation{
     height: auto;
   }
