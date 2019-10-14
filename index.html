@@ -53,11 +53,10 @@
       By changing the amount of each colour different colours and shades can be created and
       used to create an image. The value for each colour is represented by bits. The more bits
       there are, the more accurate the colour is represented. Typical hexadecimal colours are
-      represented by 24 bits, or 8 bits for each primary colour.
-
-      The representation of this turquoise using 24-bits is in binary will be divided into 3
-      8-bit segments and displayed as 001010001101110110101100. As decimal values
-      for red, green, and blue these are r40,g221,b172. Another common way to
+      represented by 24 bits, or 8 bits for each primary colour.<br>
+      For example the representation of <span style="color: rgb(40, 221, 172)">this turquoise</span> using 24-bits is in binary will be divided into 3
+      8-bit segments and displayed as 00101000 11011101 10101100. As decimal values
+      for red, green, and blue these are r40, g221, b172. Another common way to
       represent this is with hexadecimal numbers as it makes it easier to understand.
       Hexadecimal numbers are found using 4 bits aka a nibble, they range from 0-9 and a-f.
       The example colour has 0010 as its first nibble and makes the hexadecimal value of 2
@@ -66,15 +65,23 @@
       they are 5 numbers over 9, blues nibbles of 1010 and 1100 become a and c respectively
       due to the amount they are over 9. After finding these values the hexadecimal value for
       the colour is 28ddac.
+    </p>
+    <hr>
+    <h2>Compression</h2>
+    <p>
       To reduce the size of an image it is possible to change the colour depth. Changing the
       depth refers to changing the number of bits used to represent each colour. Websites
       often use colours that can be formed using fewer bits as browsers didn’t always have
       the ability to represent more than 256 colours at the same time. When the colour depth
       of an image gets reduces there tends to be a greater impact on how it looks than there
       is in the size difference.
-
-      24-bit 8-bit
-
+    </p>
+    <figure>
+      <img src="img/24bit.png" alt="24 bit image">
+      <img src="img/8bit.png" alt="8 bit image">
+      <figcaption>A 24 bit image compared to an 8 bit image</figcaption>
+    </figure>
+    <p>
       The reduction of colour depth for the colour 28ddac to an 8-bit
       representation will require the binary pattern to be reduced for each
       colour to the number of bits used, e.g. red 00101000→001, green
@@ -110,14 +117,14 @@
       internet connection or when there is a greater need for faster image transfer.
     </p>
     <hr>
-    <h2>Representing Text</h2>
+    <h2>Representing Text Using ASCII</h2>
     <p>
       When computers were first developed different techniques were used to portray
-      information from binary. As there are multiple languages different regions used different
+      information from binary. As there are multiple languages, different regions used different
       representations for different letters or characters. This caused difficulty when trying to
-      transfer data from one computer system to another. To prevent multiple different
-      representations for english information, America created ASCII, American Standard
-      Code for Information Interchange. ASCII uses the numbers generated from an 8-bit
+      transfer data from a computer system using one language to another using an alternate language. To prevent multiple different
+      representations for english information, America created the American Standard
+      Code for Information Interchange(ASCII) encoding language. ASCII uses the numbers generated from an 8-bit
       sequence of binary to determine what character is being represented. Running on an
       8-bit system ASCII uses 128 different options. To represent this there is only a
       requirement of 7 bits, but, due to ease of workability, one bit is wasted to bring the total
@@ -134,13 +141,18 @@
       For the time when computers worked together within America this worked well, the
       problems were still there but they were heavily reduced. The next change in
       standardised languages came when international communication became more popular
-      and the World Wide Web. Unicode is a character set containing different languages
-      characters to enable information transfer without corruption.
+      and the World Wide Web.
+    </p>
+    <hr>
+    <h2>Advanced Text Tepresentation Using Unicode</h2>
+    <p>
+      Unicode is a character set containing different languages'
+      characters to enable information transfer without the corruption caused by language changes.
       Unicode can be represented in many ways, the most common are UTF-8, UTF-16 and
-      UTF-32 using a minimum number of bits of 8, 16 and 32 respectively. Depending on the
+      UTF-32 using 8, 16 or 32 bits respectively. Depending on the
       type of data that you want to represent will determine which UTF will be used, UTF-8 is
       best for English characters, UTF-16 is best for Asian characters while UTF-32 will use
-      the same amount of space than both of the others. UTF-32 is a fixed length encoding
+      the same amount of space than both of the others regardless of the text. UTF-32 is a fixed length encoding
       scheme and, as such, will always use the same number of bits for representing any
       character, English or otherwise, of 32 bits. This is the main reason it is the least used
       encoding system of the three. UTF-8 and UTF-16 are both variable length encoding

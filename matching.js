@@ -8,6 +8,22 @@ const hexadecimalQuestion = document.querySelector("hexMatch.question");
 const hexadecimalAnswer = document.querySelector("hexMatch.answer");
 const reset = document.querySelector("reset");
 var lastClick = '';
+var vertical = ['75px','175px','275px','375px','475px','575px']
+var horizontal = ['100px','250px','400px','550px','700px','850px','1000px','1150px','1300px','1450px']
+
+function position(card){
+  var vNum = Math.floor(Math.random() * (6));
+  card.style.top=vertical[vNum];
+  vertical.splice(vNum,1);
+  var hNum = Math.floor(Math.random() * (10));
+  card.style.left=horizontal[hNum];
+  horizontal.splice(hNum,1);
+  if(vertical.length==0){
+    console.log('hi')
+     vertical = ['75px','175px','275px','375px','475px','575px']
+     horizontal = ['100px','200px','300px','400px','500px','600px','700px','800px','900px','1000px']
+  }
+}
 
 function wrong(selection){
   selection.style.backgroundColor = 'red';
@@ -67,12 +83,13 @@ function initialise(card,method) {
   card.style.display = 'inline-block';
   if (method == 'all'){
     card.style.backgroundColor = "";
-    card.style.margin = Math.floor(Math.random() * 100 *Math.random())+'px';
+    console.log(vertical);
+    position(card);
   }else if(method == 'color' && card.style.backgroundColor == 'red'){
     card.style.backgroundColor = "";
   }
   if(method == 'all'){
-    if (card.id == 'question'){
+    if (card.classList.contains('question')){
       switch (card.tagName){
         case 'DECMATCH':
           card.innerHTML = Math.floor(Math.random() * 100 + 10);
