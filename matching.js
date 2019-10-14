@@ -19,10 +19,10 @@ function position(card){
   card.style.left=horizontal[hNum];
   horizontal.splice(hNum,1);
   if(vertical.length==0){
-    console.log('hi')
      vertical = ['75px','175px','275px','375px','475px','575px']
-     horizontal = ['100px','200px','300px','400px','500px','600px','700px','800px','900px','1000px']
   }
+  if(horizontal.length==0){
+    horizontal = ['100px','200px','300px','400px','500px','600px','700px','800px','900px','1000px']
 }
 
 function wrong(selection){
