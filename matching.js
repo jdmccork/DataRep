@@ -9,7 +9,7 @@ const hexadecimalAnswer = document.querySelector("hexMatch.answer");
 const reset = document.querySelector("reset");
 var lastClick = '';
 var vertical = ['75px','175px','275px','375px','475px','575px']
-var horizontal = ['100px','250px','400px','550px','700px','850px','1000px','1150px','1300px','1450px']
+var horizontal = ['100px','200px','300px','400px','500px','600px','700px','800px','900px','1000px']
 
 function position(card){
   var vNum = Math.floor(Math.random() * (6));
@@ -23,6 +23,7 @@ function position(card){
   }
   if(horizontal.length==0){
     horizontal = ['100px','200px','300px','400px','500px','600px','700px','800px','900px','1000px']
+  }
 }
 
 function wrong(selection){
