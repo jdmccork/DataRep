@@ -9,7 +9,7 @@ const hexadecimalAnswer = document.querySelector("hexMatch.answer");
 const reset = document.querySelector("reset");
 var lastClick = '';
 var vertical = ['75px','175px','275px','375px','475px','575px']
-var horizontal = ['100px','200px','300px','400px','500px','600px','700px','800px','900px','1000px']
+var horizontal = ['100px','200px','300px','400px','500px','600px','700px','800px','900px','1000px','1100','1200','1300','1400','1500','1600','1700']
 
 function position(card){
   var vNum = Math.floor(Math.random() * (6));
@@ -22,7 +22,7 @@ function position(card){
      vertical = ['75px','175px','275px','375px','475px','575px']
   }
   if(horizontal.length==0){
-    horizontal = ['100px','200px','300px','400px','500px','600px','700px','800px','900px','1000px']
+    horizontal = ['100px','200px','300px','400px','500px','600px','700px','800px','900px','1000px','1100','1200','1300','1400','1500','1600','1700']
   }
 }
 
@@ -66,6 +66,7 @@ function check(selection){
 function restart(method){
   if(reset.innerHTML=='Start'){
     reset.innerHTML='Reset';
+    document.querySelector("p.instructions").style.display='none';
   }
   initialise(decimalQuestion,method);
   initialise(decimalAnswer,method);
@@ -84,7 +85,6 @@ function initialise(card,method) {
   card.style.display = 'inline-block';
   if (method == 'all'){
     card.style.backgroundColor = "";
-    console.log(vertical);
     position(card);
   }else if(method == 'color' && card.style.backgroundColor == 'red'){
     card.style.backgroundColor = "";
