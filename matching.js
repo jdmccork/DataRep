@@ -6,10 +6,10 @@ const octalQuestion = document.querySelector("octMatch.question");
 const octalAnswer = document.querySelector("octMatch.answer");
 const hexadecimalQuestion = document.querySelector("hexMatch.question");
 const hexadecimalAnswer = document.querySelector("hexMatch.answer");
-const reset = document.querySelector("reset");
+var width = window.matchMedia("(max-width: 830px)")
 var lastClick = '';
-var vertical = ['75px','175px','275px','375px','475px','575px']
-var horizontal = ['100px','200px','300px','400px','500px','600px','700px','800px','900px','1000px','1100','1200','1300','1400','1500','1600','1700']
+var vertical = ['15%','25%','35%','45%','55%','65%','75%']
+var horizontal = ['3%','9%','15%','21%','27%','33%','39%','45%','51%','57%','63%','69%','75%','81%']
 
 function position(card){
   var vNum = Math.floor(Math.random() * (6));
@@ -19,10 +19,10 @@ function position(card){
   card.style.left=horizontal[hNum];
   horizontal.splice(hNum,1);
   if(vertical.length==0){
-     vertical = ['75px','175px','275px','375px','475px','575px']
+     vertical = ['15%','25%','35%','45%','55%','65%','75%']
   }
   if(horizontal.length==0){
-    horizontal = ['100px','200px','300px','400px','500px','600px','700px','800px','900px','1000px','1100','1200','1300','1400','1500','1600','1700']
+    horizontal = ['3%','9%','15%','21%','27%','33%','39%','45%','51%','57%','63%','69%','75%','81%']
   }
 }
 
@@ -66,7 +66,9 @@ function check(selection){
 function restart(method){
   if(reset.innerHTML=='Start'){
     reset.innerHTML='Reset';
-    document.querySelector("p.instructions").style.display='none';
+    document.querySelector("p.instructions").style.top='91.5%';
+    document.querySelector("p.instructions").style.left='20%';
+    document.querySelector("p.instructions").style.fontSize='70%';
   }
   initialise(decimalQuestion,method);
   initialise(decimalAnswer,method);
@@ -82,31 +84,44 @@ function restart(method){
 }
 
 function initialise(card,method) {
-  card.style.display = 'inline-block';
-  if (method == 'all'){
-    card.style.backgroundColor = "";
-    position(card);
-  }else if(method == 'color' && card.style.backgroundColor == 'red'){
-    card.style.backgroundColor = "";
-  }
-  if(method == 'all'){
-    if (card.classList.contains('question')){
-      switch (card.tagName){
-        case 'DECMATCH':
-          card.innerHTML = Math.floor(Math.random() * 100 + 10);
-          break;
-        case 'BINMATCH':
-          card.innerHTML = parseFloat(decimalQuestion.innerHTML).toString(2);
-          break;
-        case 'OCTMATCH':
-          card.innerHTML = parseFloat(decimalQuestion.innerHTML).toString(8);
-          break;
-        case "HEXMATCH":
-          card.innerHTML = parseFloat(decimalQuestion.innerHTML).toString(16);
+  var mq = window.innerWidth;
+  if (mq>=830) {
+    card.style.display = 'inline-block';
+    if (method == 'all'){
+      card.style.backgroundColor = "";
+      position(card);
+    }else if(method == 'color' && card.style.backgroundColor == 'red'){
+      card.style.backgroundColor = "";
+    }
+    if(method == 'all'){
+      if (card.classList.contains('question')){
+        switch (card.tagName){
+          case 'DECMATCH':
+            card.innerHTML = Math.floor(Math.random() * 100 + 10);
+            break;
+          case 'BINMATCH':
+            card.innerHTML = parseFloat(decimalQuestion.innerHTML).toString(2);
+            break;
+          case 'OCTMATCH':
+            card.innerHTML = parseFloat(decimalQuestion.innerHTML).toString(8);
+            break;
+          case "HEXMATCH":
+            card.innerHTML = parseFloat(decimalQuestion.innerHTML).toString(16);
+          }
         }
       }
+    }else {
+      card.style.display='none';
     }
 }
+
+window.onresize = function(event) {
+  var mq = window.innerWidth;
+  if (mq>=830) {
+  }else {
+    restart('all')
+  }
+};
 
 function main(){
   decimalQuestion.onclick = function() {check(decimalQuestion)};
