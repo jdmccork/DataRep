@@ -119,7 +119,6 @@ function initialise(card,method) {
 window.onresize = function(event) {
   var mq = window.innerWidth;
   if (mq>=830 & lastWidth<830) {
-    console.log(lastWidth)
     restart('all');
     lastWidth = mq;
   }else if(mq<=830){
