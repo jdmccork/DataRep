@@ -8,6 +8,7 @@ const hexadecimalQuestion = document.querySelector("hexMatch.question");
 const hexadecimalAnswer = document.querySelector("hexMatch.answer");
 var width = window.matchMedia("(max-width: 830px)")
 var lastClick = '';
+var lastWidth = '0';
 var vertical = ['15%','25%','35%','45%','55%','65%','75%']
 var horizontal = ['3%','9%','15%','21%','27%','33%','39%','45%','51%','57%','63%','69%','75%','81%']
 
@@ -117,9 +118,13 @@ function initialise(card,method) {
 
 window.onresize = function(event) {
   var mq = window.innerWidth;
-  if (mq>=830) {
-  }else {
-    restart('all')
+  if (mq>=830 & lastWidth<830) {
+    console.log(lastWidth)
+    restart('all');
+    lastWidth = mq;
+  }else if(mq<=830){
+    restart('all');
+    lastWidth = mq;
   }
 };
 
